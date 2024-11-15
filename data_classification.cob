@@ -2,7 +2,7 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID. data_classification.
        AUTHOR. Franklin Ngkokam Ngongang.
-       DATE-WRITTEN.November 14th, 2024.
+       DATE-WRITTEN.November 14th, 2024 5:33 PM.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        SPECIAL-NAMES.
@@ -33,5 +33,43 @@
            ELSE
                DISPLAY "You can't vote"
            END-IF
+           IF Score IS PassingScore THEN
+               DISPLAY " You Passed"
+           ELSE
+               DISPLAY "You Failed"
+           END-IF
+           *> Built In Classifications
+           *> NUMERIC ALPHABETIC ALPHABETIC-LOWER ALPHABETIC-UPPER
+           IF Score IS NUMERIC THEN
+               DISPLAY "Score Is A Number"
+           ELSE
+               DISPLAY "Score Is Not A Number"
+           END-IF
+           
+           IF Grade IS NUMERIC THEN
+               DISPLAY "Grade is a numeric value."
+           END-IF
+
+           IF Age > 18 THEN 
+               SET CanVote TO TRUE
+           ELSE
+               SET CantVote TO TRUE
+           END-IF
+
+           DISPLAY "Vote " CanVoteFlag
+
+           DISPLAY "Enter Single Number or X to Exit: "
+           ACCEPT TestNumber
+           PERFORM UNTIL NOT ANumber
+               EVALUATE TRUE
+                   WHEN IsPrime DISPLAY "Prime"
+                   WHEN IsOdd DISPLAY "Odd"
+                   WHEN IsEven DISPLAY "Even"
+                   WHEN LessThan5 DISPLAY "Less than 5"
+                   WHEN OTHER DISPLAY "Default Action"
+                END-EVALUATE
+                ACCEPT TestNumber
+
+           END-PERFORM
            
            STOP RUN.
